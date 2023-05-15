@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Answer</title>
+</head>
+<body>
+    <pre class="mermaid">
+      sequenceDiagram
+    participant user
+    participant browser
+    participant server
+    
+    user->>+browser: Write and add a new note
+    browser->>+server: Request HTTP POST for "new note" server
+    activate server
+    server-->>-browser: Answer a code "HTTP 302"
+    deactivate server
+
+    browser->>+server: Request HTTP POST: search main.css, main.js and data.json
+    activate server
+    server-->>-browser: Answer with a object "Notes"
+
+
+   
+
+    </pre>
+
+
+
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</body>
+</html>
