@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const List = ({persons}) => {
+const List = ({persons, removePersons}) => {
 
   const [findPerson, setFindPerson] = useState('')
   const [searchResult, setSearchResult] = useState('')
@@ -27,7 +27,10 @@ const List = ({persons}) => {
     {searchResult !== "" ? searchResult
     :
     persons.map((person) => (
-    <li key={person.id}>Name: {person.name} {person.number}</li>
+      <li key={person.id}>
+        <p>Name: {person.name} {person.number}</p>
+        <button onClick={() => removePersons(person.id)}>Delete</button>
+      </li> 
     ))
     } 
     </ul>
