@@ -12,7 +12,6 @@ const Form = ({newName, setNewName, newNumber, setNewNumber, handleFormSubmit, t
         </div>
         <div>
           <button type="submit">add</button>
-          <button onClick={() => togglePersons(persons.find(p => p.id))}>Change Number</button>
         </div>
       </form>
     </div>

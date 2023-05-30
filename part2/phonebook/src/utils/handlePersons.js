@@ -9,11 +9,24 @@ const handlePersons = (e, persons, newName, newNumber, setPersons, setNewName, s
 
 
   if(newName === '' || newNumber === '') {
-    return alert('Do you forgot something')
-  } else if (existName && existNumber ) {
-    return alert(`${newName} is already exist`)
-  } else if (existNumber) {
-    return alert(`${newNumber} is already exist`)
+    return alert('Do you forgot something!')
+  } else if (existName || existNumber) {
+
+    const confirmed = window.confirm(`${newName} already exists. Do you want to update it?`)
+
+    if (confirmed) {
+      const personUpdate = {
+        name: newName,
+        number:newNumber,
+      }
+  
+      personsService
+      .togglePerson(existName.id, personUpdate)
+      .then(r => {
+        setPersons(persons.map(p => p.id === existName.id ? r : p))
+    })
+  }
+    
   } else {
     const newPerson = {
       name: newName,
@@ -28,6 +41,6 @@ const handlePersons = (e, persons, newName, newNumber, setPersons, setNewName, s
   setNewName('')
   setNewNumber('')
   
-};
+}
 
 export default handlePersons
